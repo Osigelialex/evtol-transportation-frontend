@@ -1,14 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import AddIcon from '@mui/icons-material/Add';
+import { useSnackbar } from "notistack";
 
 const Register = () => {
   const [serialNumber, setSerialNumber] = useState("");
   const [model, setModel] = useState("Lightweight");
   const [weightLimit, setWeightLimit] = useState("");
-  const [hasSuccess, setHasSuccess] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,16 +22,13 @@ const Register = () => {
         }
       );
 
-      setHasSuccess(true);
-      setTimeout(() => setHasSuccess(false), 3000);
+      enqueueSnackbar("EVTOL Successfully registered", { variant: 'success' });        
     } catch (error) {
       if (error.response) {
-        setHasError(true)
-        setErrorMessage(error.response.data.message || "An error occurred.");
+        enqueueSnackbar(error.response.data.message, { variant: 'error' });
       } else {
-        setErrorMessage("An error occurred during submission.");
+        enqueueSnackbar("An error occurred during submission", { variant: 'error' });
       }
-      setTimeout(() => setHasError(false), 3000);
     }
   };
 
@@ -45,19 +41,7 @@ const Register = () => {
             Register an evtol
           </h2>
         </div>
-
         <hr className="w-full my-5" />
-        {hasError && (
-          <div className="bg-red-500 text-center text-white p-3">
-            {errorMessage}
-          </div>
-        )}
-        {hasSuccess && (
-          <div className="bg-green-500 text-center text-white p-3">
-            Successfully registered evtol
-          </div>
-        )}
-
         <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
           {/* Serial number input */}
           <label className="text-gray-700 font-medium block text-left">

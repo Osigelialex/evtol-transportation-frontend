@@ -17,6 +17,7 @@ const Dashboard = () => {
           "http://localhost:8080/api/v1/dashboard"
         );
 
+        console.log(response.data);
         setDashboardData(response.data);
       } catch (error) {
 

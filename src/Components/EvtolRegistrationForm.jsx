@@ -10,17 +10,14 @@ import MenuItem from "@mui/material/MenuItem";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import axios from "axios";
-import Alert from '@mui/material/Alert';
-import CheckIcon from '@mui/icons-material/Check';
+import { useSnackbar } from "notistack";
 
 
 export default function EvtolRegistrationForm({ onRegister }) {
   const [open, setOpen] = React.useState(false);
   const [model, setModel] = React.useState("");
-  const [isSuccessful, setIsSuccessful] = React.useState(false);
   const [weightLimit, setWeightLimit] = React.useState("");
-  const [hasError, setHasError] = React.useState(false);
-  const [errorMessage, setErrorMessage] = React.useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (event) => {
     setModel(event.target.value);
@@ -39,27 +36,15 @@ export default function EvtolRegistrationForm({ onRegister }) {
     try {
       await axios.post(URL, data);
       onRegister();
-      setIsSuccessful(true);
-      setTimeout(() => setIsSuccessful(false), 3000);
+      enqueueSnackbar("EVTOL Successfully registered", { variant: 'success' });
     } catch(error) {
-      console.log(error);
-      setHasError(true)
-      setErrorMessage(error.response.data.message)
-      setTimeout(() => setHasError(false), 3000)
+      enqueueSnackbar(error.response.data.message, { variant: 'error' });
     }
   }
 
   return (
     <>
-      {isSuccessful && (
-      <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-        EVTOL Successfully registered
-      </Alert>)}
-      {hasError && (
-      <Alert severity="error">
-        {errorMessage}
-      </Alert>)}
-      <button className="bg-[#00c000] text-white p-3" onClick={handleClickOpen}>
+      <button className="bg-blue-500 text-white p-3" onClick={handleClickOpen}>
         + Add New
       </button>
       <Dialog

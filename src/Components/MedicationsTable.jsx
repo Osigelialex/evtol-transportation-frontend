@@ -19,9 +19,6 @@ const MedicationTable = ({data}) => {
       sx={{
         height: 400,
         width: '100%',
-        '& .super-app-theme--header': {
-          backgroundColor: '#c5c5c5',
-        },
       }}
     >
       <DataGrid
@@ -34,7 +31,6 @@ const MedicationTable = ({data}) => {
           },
         }}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
       />
     </Box>
   );

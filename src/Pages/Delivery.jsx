@@ -58,19 +58,14 @@ const Delivery = () => {
   return (
     <>
       <div className="p-6 bg-slate-50 min-h-screen lg:ml-[15rem] font-poppins">
-        <h2 className="font-bold text-xl mb-5 text-left">Evtol delivery</h2>
-        <div className="bg-white border grid sm:grid-cols-12">
-          <div className="sm:col-span-6 border-r p-5">
-          {success && (
-            <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-              EVTOL successfully set for delivery
-            </Alert>
-          )}
-          {hasError && (
-            <Alert severity="error">
-              {errorMessage}
-            </Alert>
-          )}
+        <div className="bg-white border grid sm:grid-cols-12 w-3/4 mx-auto">
+          <div className="sm:col-span-12 border-r p-5">
+            {success && (
+              <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+                EVTOL successfully set for delivery
+              </Alert>
+            )}
+            {hasError && <Alert severity="error">{errorMessage}</Alert>}
             <h2 className="font-bold text-lg mb-5">Delivery options</h2>
             <div className="border p-3">
               <form onSubmit={handleSubmit}>
@@ -122,61 +117,9 @@ const Delivery = () => {
                 <input
                   type="submit"
                   value="Done"
-                  className="mx-auto bg-[#00c000] text-white p-3 w-full mt-5"
+                  className="mx-auto bg-blue-500 text-white p-3 w-full mt-5"
                 />
               </form>
-            </div>
-          </div>
-          <div className="sm:col-span-6 bg-[#00c000]">
-            <div className="p-5">
-              <h2 className="font-bold text-lg text-white text-left">
-                Delivery Summary
-              </h2>
-              <div className="mt-5">
-                <div className="grid sm:grid-cols-12 mt-5 text-white border-b border-dashed pb-2">
-                  <h2 className="col-span-12 font-bold">Recipient info</h2>
-                  <div className="col-span-6 mt-3">
-                    <h2>Name:</h2>
-                  </div>
-                  <div className="col-span-6 mt-3">
-                    <h2>{recipient}</h2>
-                  </div>
-                  <div className="col-span-6 mt-3">
-                    <h2>Address:</h2>
-                  </div>
-                  <div className="col-span-6 mt-3">
-                    <h2>{address}</h2>
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-12 mt-5 text-white relative mb-1 border-b border-dashed pb-2">
-                  <h2 className="col-span-12 font-bold mb-2">
-                    Date time Information
-                  </h2>
-                  <div className="col-span-6">
-                    <h2>Date:</h2>
-                  </div>
-                  <div className="col-span-6">
-                    <h2>{new Date().toJSON().slice(0, 10)}</h2>
-                  </div>
-
-                  <div className="col-span-6 mt-3">
-                    <h2>Estimated time:</h2>
-                  </div>
-                  <div className="col-span-6 mt-3">
-                    <h2>2 hours</h2>
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-12 mt-5 text-white mb-1 border-b border-dashed pb-2">
-                  <div className="col-span-6">
-                    <h2>Amount:</h2>
-                  </div>
-                  <div className="col-span-6">
-                    <h2>$20</h2>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

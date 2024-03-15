@@ -1,7 +1,6 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
-import { useGridApiRef } from "@mui/x-data-grid";
 
 const columns = [
   {
@@ -50,9 +49,6 @@ const EvtolTable = ({ data }) => {
       sx={{
         height: 400,
         width: "100%",
-        "& .super-app-theme--header": {
-          backgroundColor: "#c5c5c5",
-        },
       }}
     >
       <DataGrid
@@ -66,7 +62,6 @@ const EvtolTable = ({ data }) => {
           },
         }}
         pageSizeOptions={[5, 10]}
-        checkboxSelection
       />
     </Box>
   );

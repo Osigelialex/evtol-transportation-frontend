@@ -10,12 +10,11 @@ import InputLabel from "@mui/material/InputLabel";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
+import { useSnackbar } from "notistack";
 
 export default function MedicationForm() {
   const [open, setOpen] = React.useState(false);
-  const [isSuccessful, setIsSuccessful] = React.useState(false);
-  const [hasError, setHasError] = React.useState(false);
-  const [errorMessage, setErrorMessage] = React.useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -29,28 +28,15 @@ export default function MedicationForm() {
     const URL = "http://localhost:8080/api/v1/medications";
     try {
       await axios.post(URL, data);
-      setIsSuccessful(true);
-      setTimeout(() => setIsSuccessful(false), 3000);
+      enqueueSnackbar("Medication added successfully", { variant: "success" });
     } catch (error) {
-      setHasError(true);
-      setErrorMessage(error.response.data.message);
-      setTimeout(() => setHasError(false), 3000);
+      enqueueSnackbar(error.response.data.message, { variant: "error" });
     }
   };
 
   return (
     <>
-      {isSuccessful && (
-        <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-          Medication added successfully
-        </Alert>
-      )}
-      {hasError && (
-        <Alert severity="error">
-          {errorMessage}
-        </Alert>
-      )}
-      <button className="bg-[#00c000] text-white p-3" onClick={handleClickOpen}>
+      <button className="bg-blue-500 text-white p-3" onClick={handleClickOpen}>
         + Add New
       </button>
       <Dialog
@@ -87,7 +73,7 @@ export default function MedicationForm() {
             placeholder="Name of medication"
             variant="outlined"
             inputProps={{
-              pattern: "^[a-zA-Z0-9_-]*",
+              pattern: "^[a-zA-Z0-9_]*",
               title: "Enter only alphanumeric characters",
             }}
           />
