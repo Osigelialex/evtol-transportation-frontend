@@ -35,9 +35,9 @@ const Medications = () => {
   return (
     <>
       <div className="p-6 bg-slate-50 min-h-screen lg:ml-[15rem] font-poppins">
-        <div className="flex justify-between items-center align-middle mb-10">
+        <div className="flex justify-between items-center align-middle mb-5">
           <div className="flex gap-3 items-center align-middle">
-            <h2 className="font-bold text-xl mb-10 inline">
+            <h2 className="font-bold text-xl inline">
               Stored Medications
             </h2>
           </div>

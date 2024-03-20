@@ -2,6 +2,22 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
 
+const stateColorMap = {
+  IDLE: "#ff474c",
+  LOADING: "yellow",
+  LOADED: "lime",
+  DELIVERED: "#5ced73",
+};
+
+const renderStateCell = (params) => {
+  const state = params.value;
+  const color = stateColorMap[state];
+
+  return (
+    <span style={{ backgroundColor: color, padding: '3px', borderRadius: '10px' }}>{state}</span>
+  );
+};
+
 const columns = [
   {
     field: "serialNumber",
@@ -36,6 +52,7 @@ const columns = [
     headerName: "State",
     width: 160,
     headerClassName: "super-app-theme--header",
+    renderCell: renderStateCell,
   },
 ];
 

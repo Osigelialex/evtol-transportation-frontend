@@ -57,7 +57,7 @@ const LoadMedications = () => {
       <div className="p-6 bg-slate-50 min-h-screen lg:ml-[15rem] font-poppins">
         <div className="bg-white p-6 w-3/4 mx-auto border-2">
           <h2 className="font-bold text-xl mb-10 text-center">
-            Load EVTOL with medications
+            Load EVTOL for delivery
           </h2>
           <div className="border p-5">
             <form

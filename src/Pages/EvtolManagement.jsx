@@ -37,8 +37,8 @@ const EvtolManagement = () => {
   return (
     <>
       <div className="p-6 bg-slate-50 min-h-screen lg:ml-[15rem] font-poppins">
-        <div className="flex justify-between items-center align-middle mb-10">
-          <h2 className="font-bold text-xl mb-10 inline-block">
+        <div className="flex justify-between items-center align-middle mb-5">
+          <h2 className="font-bold text-xl inline-block">
             EVTOL Aircrafts
           </h2>
           <EvtolRegistrationForm onRegister={updateRegisteredNew} />

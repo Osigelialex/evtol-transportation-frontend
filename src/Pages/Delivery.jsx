@@ -1,17 +1,14 @@
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useEffect, useState } from "react";
-import Alert from "@mui/material/Alert";
-import CheckIcon from "@mui/icons-material/Check";
+import { useSnackbar } from "notistack";
 
 const Delivery = () => {
   const [loadedEvtol, setLoadedEvtol] = useState(null);
   const [recipient, setRecipient] = useState("");
   const [address, setAddress] = useState("");
   const [selectedEvtol, setSelectedEvtol] = useState("");
-  const [success, setSuccess] = useState(false);
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,10 +37,9 @@ const Delivery = () => {
         evtolSerialNumber: selectedEvtol,
       });
 
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 3000);
+      enqueueSnackbar("EVTOL set for delivery", { variant: "success" });
     } catch (error) {
-      console.log(error);
+      enqueueSnackbar(error.response.data.message, { variant: "error" })
     }
   };
 
@@ -60,12 +56,6 @@ const Delivery = () => {
       <div className="p-6 bg-slate-50 min-h-screen lg:ml-[15rem] font-poppins">
         <div className="bg-white border grid sm:grid-cols-12 w-3/4 mx-auto">
           <div className="sm:col-span-12 border-r p-5">
-            {success && (
-              <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-                EVTOL successfully set for delivery
-              </Alert>
-            )}
-            {hasError && <Alert severity="error">{errorMessage}</Alert>}
             <h2 className="font-bold text-lg mb-5">Delivery options</h2>
             <div className="border p-3">
               <form onSubmit={handleSubmit}>

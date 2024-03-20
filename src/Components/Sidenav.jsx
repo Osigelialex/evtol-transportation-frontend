@@ -24,25 +24,25 @@ const Sidenav = () => {
               </div>
             </Link>
             <Link to="/">
-              <div className="rounded-md mb-2 flex gap-4 text-left text-sm text-gray-500 p-5 cursor-pointer hover:bg-[#ADD8E6] hover:text-white">
+              <div className="rounded-md flex gap-4 text-left text-sm text-gray-500 p-4 cursor-pointer hover:bg-[#ADD8E6] hover:text-white">
                 <DashboardIcon />
                 <h2>Dashboard</h2>
               </div>
             </Link>
             <Link to="evtol-management">
-              <div className="rounded-md mb-2 flex gap-4 text-left text-sm text-gray-500 p-5 cursor-pointer hover:bg-[#ADD8E6] hover:text-white">
+              <div className="rounded-md flex gap-4 text-left text-sm text-gray-500 p-4 cursor-pointer hover:bg-[#ADD8E6] hover:text-white">
                 <SettingsIcon />
                 <h2>Manage evtols</h2>
               </div>
             </Link>
             <Link to="medications">
-              <div className="rounded-md mb-2 flex gap-4 text-left text-sm text-gray-500 p-5 cursor-pointer hover:bg-[#ADD8E6] hover:text-white">
+              <div className="rounded-md flex gap-4 text-left text-sm text-gray-500 p-4 cursor-pointer hover:bg-[#ADD8E6] hover:text-white">
                 <MedicalServicesIcon />
                 <h2>Medications</h2>
               </div>
             </Link>
             <Link to="load-medications">
-              <div className="rounded-md mb-2 flex gap-4 text-left text-sm text-gray-500 p-5 cursor-pointer hover:bg-[#ADD8E6] hover:text-white">
+              <div className="rounded-md flex gap-4 text-left text-sm text-gray-500 p-4 cursor-pointer hover:bg-[#ADD8E6] hover:text-white">
                 <FlightIcon />
                 <h2>Load EVTOL</h2>
               </div>
